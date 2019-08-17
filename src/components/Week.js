@@ -20,6 +20,7 @@ function Week(props) {
       ) : (
         ""
       )}
+      <Search />
       <div className="week-container">
         {props.consolidated_weather.map(day => (
           <Day day={day} index={week.indexOf(day)} />

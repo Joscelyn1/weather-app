@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, FormInput, Form } from "shards-react";
 import { getData } from "../actions";
 import { connect } from "react-redux";
 function Search(props) {
   const [query, setQuery] = useState("");
 
+  function handleChange(e) {
+    e.preventDefault();
+    setQuery(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    alert("A name was submitted: " + query);
+    props.getData(query);
+    e.preventDefault();
+  }
   return (
     <section className="search-form">
-      <Form className="form">
-        <FormInput
-          onSubmit={e => setQuery(e.target.value)}
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
           placeholder="city"
           name="name"
         />
-        <Button onClick={props.getData(query)} theme="light" type="submit">
-          Search
-        </Button>
-      </Form>
+        <input type="submit" value="Submit" />
+      </form>
     </section>
   );
 }
@@ -33,30 +42,3 @@ export default connect(
   mapStateToProps,
   { getData }
 )(Search);
-
-/*
-  console.log(props);
-  const [date, setDate] = useState("");
-  return (
-    <div className="App">
-      <h1> Nasa Photo of the Day </h1>
-      <input
-        type="text"
-        placeholder="date"
-        value={date}
-        onChange={e => setDate(e.target.value)}
-      />
-      {props.loading && <div>loading...</div>}
-      {props.apod && (
-        <div>
-          <img alt="something" src={props.apod.url} />
-          <p>{props.apod.explanation}</p>
-        </div>
-      )}
-      {props.error !== "" && <p>{props.error}</p>}
-      <button onClick={() => props.getApod(date)}>Get Photo of the Day</button>
-    </div>
-  );
-}
-
-*/

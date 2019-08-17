@@ -26,7 +26,7 @@ export const reducer = (state = initialState, action) => {
         title: action.payload.title,
         error: ""
       };
+    default:
+      return state;
   }
-
-  return state;
 };
