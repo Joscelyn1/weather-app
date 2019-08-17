@@ -1,7 +1,10 @@
 import {
   FETCH_WEATHER_DATA_START,
   FETCH_WEATHER_DATA_SUCCESS,
-  FETCH_WEATHER_DATA_FAILURE
+  FETCH_WEATHER_DATA_FAILURE,
+  FETCH_QUERY_DATA_START,
+  FETCH_QUERY_DATA_SUCCESS,
+  FETCH_QUERY_DATA_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -25,6 +28,19 @@ export const reducer = (state = initialState, action) => {
         consolidated_weather: action.payload.consolidated_weather,
         title: action.payload.title,
         error: ""
+      };
+    case FETCH_QUERY_DATA_START:
+      return {
+        ...state,
+        isLoading: true,
+        error: ""
+      };
+
+    case FETCH_QUERY_DATA_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: "Couldn't find a city with that name"
       };
     default:
       return state;
