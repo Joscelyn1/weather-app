@@ -35,12 +35,7 @@ export const reducer = (state = initialState, action) => {
         isLoading: true,
         error: ""
       };
-    case FETCH_QUERY_DATA_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: ""
-      };
+
     case FETCH_QUERY_DATA_FAILURE:
       return {
         ...state,

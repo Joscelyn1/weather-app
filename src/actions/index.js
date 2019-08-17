@@ -4,7 +4,6 @@ export const FETCH_WEATHER_DATA_START = "FETCH_WEATHER_DATA_START";
 export const FETCH_WEATHER_DATA_SUCCESS = "FETCH_WEATHER_DATA_SUCCESS";
 export const FETCH_WEATHER_DATA_FAILURE = "FETCH_WEATHER_DATA_FAILURE";
 export const FETCH_QUERY_DATA_START = "FETCH_QUERY_DATA_START";
-export const FETCH_QUERY_DATA_SUCCESS = "FETCH_QUERY_DATA_SUCCESS";
 export const FETCH_QUERY_DATA_FAILURE = "FETCH_QUERY_DATA_FAILURE";
 
 export const getData = query => {
@@ -33,11 +32,10 @@ export const getQueryData = query => {
         `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${query}`
       )
       .then(res => {
-        console.log(res, "res of query");
         if (res.data.length > 0) {
           console.log("found woeid", res.data[0].woeid);
-          //getData(res.data[0].woeid);
-          dispatch({ type: FETCH_QUERY_DATA_SUCCESS });
+          getData(res.data[0].woeid)(dispatch);
+          //dispatch({ type: FETCH_QUERY_DATA_SUCCESS });
         } else {
           console.log("couldn't find anything");
         }
