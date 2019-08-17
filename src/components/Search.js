@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { getData } from "../actions";
+import { getData, getQueryData } from "../actions";
 import { connect } from "react-redux";
+import { Button, Form, FormInput } from "shards-react";
 function Search(props) {
   const [query, setQuery] = useState("");
 
@@ -11,22 +12,22 @@ function Search(props) {
   }
 
   function handleSubmit(e) {
-    alert("A name was submitted: " + query);
-    props.getData(query);
     e.preventDefault();
+    props.getQueryData(query);
+    //props.getData(query);
   }
   return (
     <section className="search-form">
-      <form onSubmit={handleSubmit} className="form">
-        <input
+      <Form onSubmit={handleSubmit} className="form">
+        <FormInput
           type="text"
           value={query}
           onChange={handleChange}
           placeholder="city"
           name="name"
         />
-        <input type="submit" value="Submit" />
-      </form>
+        <Button /*type="submit"*/ value="Submit">Submit</Button>
+      </Form>
     </section>
   );
 }
@@ -40,5 +41,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, getQueryData }
 )(Search);
