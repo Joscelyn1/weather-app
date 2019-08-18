@@ -1,1 +1,1 @@
-export { reducer } from "./weatherReducer.js";
+export { reducer } from './weatherReducer.js';

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { getData, getQueryData } from "../actions";
-import { connect } from "react-redux";
-import { Button, Form, FormInput } from "shards-react";
+import React, { useState, useEffect } from 'react';
+import { getData, getQueryData } from '../actions';
+import { connect } from 'react-redux';
+import { Button, Form, FormInput } from 'shards-react';
 function Search(props) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   function handleChange(e) {
     e.preventDefault();
@@ -14,7 +13,7 @@ function Search(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.getQueryData(query);
-    setQuery("");
+    setQuery('');
   }
   return (
     <section className="search-form">
@@ -26,7 +25,7 @@ function Search(props) {
           placeholder="city"
           name="name"
         />
-        <Button /*type="submit"*/ value="Submit">Submit</Button>
+        <Button value="Submit">Submit</Button>
       </Form>
     </section>
   );
