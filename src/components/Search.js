@@ -14,7 +14,7 @@ function Search(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.getQueryData(query);
-    //props.getData(query);
+    setQuery("");
   }
   return (
     <section className="search-form">
