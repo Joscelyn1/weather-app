@@ -15,7 +15,7 @@ export const getData = query => {
       )
       .then(res => {
         // res.data.data
-        console.log(res, "res");
+
         dispatch({ type: FETCH_WEATHER_DATA_SUCCESS, payload: res.data });
       })
       .catch(err => {
@@ -33,7 +33,6 @@ export const getQueryData = query => {
       )
       .then(res => {
         if (res.data.length > 0) {
-          console.log("found woeid", res.data[0].woeid);
           getData(res.data[0].woeid)(dispatch);
           //dispatch({ type: FETCH_QUERY_DATA_SUCCESS });
         } else {
