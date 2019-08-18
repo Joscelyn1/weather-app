@@ -5,12 +5,16 @@ import { getData } from "../actions";
 import { connect } from "react-redux";
 import Search from "./Search.js";
 import Day from "./Day.js";
+import { Button } from "shards-react";
 function Week(props) {
   useEffect(() => {
     props.getData(2442047);
   }, []);
   const week = Array.from(props.consolidated_weather);
-  console.log(props, "props");
+  let fahrenheit = true;
+  function handleChanges() {
+    fahrenheit = !fahrenheit;
+  }
   return (
     <div className="container">
       <h1 className="title">
@@ -30,9 +34,12 @@ function Week(props) {
         ""
       )}
       <Search />
+      <Button onClick={handleChanges}>
+        {fahrenheit ? "Celsius" : "Fahrenheit"}
+      </Button>
       <div className="week-container">
         {props.consolidated_weather.map(day => (
-          <Day day={day} index={week.indexOf(day)} />
+          <Day fahrenheit={fahrenheit} day={day} index={week.indexOf(day)} />
         ))}
       </div>
     </div>
