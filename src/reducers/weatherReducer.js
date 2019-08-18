@@ -5,12 +5,12 @@ import {
   FETCH_QUERY_DATA_START,
   FETCH_QUERY_DATA_FAILURE,
   TOGGLE_FAHRENHEIT_CELSIUS
-} from "../actions";
+} from '../actions';
 
 const initialState = {
   consolidated_weather: [],
   isLoading: false,
-  error: "error"
+  error: 'error'
 };
 
 export const reducer = (state = initialState, action) => {
