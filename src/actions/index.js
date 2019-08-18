@@ -37,7 +37,9 @@ export const getQueryData = query => {
           getData(res.data[0].woeid)(dispatch);
           //dispatch({ type: FETCH_QUERY_DATA_SUCCESS });
         } else {
-          console.log("couldn't find anything");
+          dispatch({
+            type: FETCH_QUERY_DATA_FAILURE
+          });
         }
       })
       .catch(err => {

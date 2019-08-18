@@ -13,8 +13,17 @@ function Week(props) {
   console.log(props, "props");
   return (
     <div className="container">
-      <h1 className="title">{props.title} Weather ☀️</h1>
-
+      <h1 className="title">
+        {props.title} Weather{" "}
+        <span aria-label="sun" role="img">
+          ☀️
+        </span>
+      </h1>
+      {props.error ? (
+        <p className="error">Error: couldn't find a city with that name</p>
+      ) : (
+        ""
+      )}
       {props.isLoading ? (
         <Loader type="TailSpin" color="#00BFFF" height="100" width="100" />
       ) : (
@@ -34,7 +43,8 @@ const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
     consolidated_weather: state.consolidated_weather,
-    title: state.title
+    title: state.title,
+    error: state.error
   };
 };
 export default connect(
