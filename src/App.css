@@ -82,7 +82,7 @@ body {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .week-container {
     flex-direction: row;
   }
