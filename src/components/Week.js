@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
-import Loader from 'react-loader-spinner';
-import { getData } from '../actions';
-import { connect } from 'react-redux';
-import Search from './Search.js';
-import Day from './Day.js';
-import { Button } from 'shards-react';
+import React, { useEffect } from "react";
+
+import Loader from "react-loader-spinner";
+import { getData } from "../actions";
+import { connect } from "react-redux";
+import Search from "./Search.js";
+import Day from "./Day.js";
+
 function Week(props) {
   useEffect(() => {
     props.getData(2442047);
@@ -18,7 +18,7 @@ function Week(props) {
   return (
     <div className="container">
       <h1 className="title">
-        {props.title} Weather{' '}
+        {props.title} Weather{" "}
         <span aria-label="sun" role="img">
           ☀️
         </span>
@@ -26,12 +26,12 @@ function Week(props) {
       {props.error ? (
         <p className="error">Error: couldn't find a city with that name</p>
       ) : (
-        ''
+        ""
       )}
       {props.isLoading ? (
-        <Loader type="TailSpin" color="#00BFFF" height="100" width="100" />
+        <Loader type="TailSpin" color="#00BFFF" height={100} width={100} />
       ) : (
-        ''
+        ""
       )}
       <Search />
       {/* <Button onClick={handleChanges}>
@@ -39,7 +39,7 @@ function Week(props) {
       </Button> */}
       <div className="week-container">
         {props.consolidated_weather.map(day => (
-          <Day day={day} index={week.indexOf(day)} />
+          <Day key={day.id} day={day} index={week.indexOf(day)} />
         ))}
       </div>
     </div>
@@ -54,7 +54,4 @@ const mapStateToProps = state => {
     error: state.error
   };
 };
-export default connect(
-  mapStateToProps,
-  { getData }
-)(Week);
+export default connect(mapStateToProps, { getData })(Week);
