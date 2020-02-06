@@ -5,12 +5,10 @@ import {
   CardTitle,
   CardImg,
   CardBody,
-  CardFooter,
-  Button
+  CardFooter
 } from "shards-react";
 
 function Day(props) {
-  console.log(typeof props.day.applicable_date);
   const day = new Date(props.day.applicable_date);
   const week = [
     "Sunday",
