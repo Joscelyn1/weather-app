@@ -8,13 +8,10 @@ import Day from "./Day.js";
 
 function Week(props) {
   useEffect(() => {
-    props.getData(2442047);
+    props.getData(4118);
   }, []);
   const week = Array.from(props.consolidated_weather);
-  // let fahrenheit = true;
-  // function handleChanges() {
-  //   fahrenheit = !fahrenheit;
-  // }
+
   return (
     <div className="container">
       <h1 className="title">
@@ -34,9 +31,7 @@ function Week(props) {
         ""
       )}
       <Search />
-      {/* <Button onClick={handleChanges}>
-        {fahrenheit ? 'Celsius' : 'Fahrenheit'}
-      </Button> */}
+
       <div className="week-container">
         {props.consolidated_weather.map(day => (
           <Day key={day.id} day={day} index={week.indexOf(day)} />
