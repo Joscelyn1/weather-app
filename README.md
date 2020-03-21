@@ -10,6 +10,7 @@ https://how-is-the-weather.netlify.com/
 
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
+* [MetaWeather API](https://www.metaweather.com/api/)
 
 ## Authors
 
