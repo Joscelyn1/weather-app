@@ -20,7 +20,6 @@ function Week(props) {
         position.coords.longitude
       );
     });
-    props.getData(2487956);
   }, []);
 
   const week = Array.from(props.consolidated_weather);
