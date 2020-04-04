@@ -12,16 +12,17 @@ function Week(props) {
   // } else {
   //   console.log("geolocation is not available");
   // }
+
   useEffect(() => {
-    console.log("hello");
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log("hello 2");
       props.getInfoFromLatLong(
         position.coords.latitude,
         position.coords.longitude
       );
     });
-  }, [props]);
+    props.getData(2487956);
+  }, []);
+
   const week = Array.from(props.consolidated_weather);
 
   return (
