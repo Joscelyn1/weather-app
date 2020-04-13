@@ -6,7 +6,9 @@ Find out the weather in any major city!
 
 ## Deployed Here
 
+
 https://how-is-the-weather.netlify.com/
+
 
 ## Built With
 
